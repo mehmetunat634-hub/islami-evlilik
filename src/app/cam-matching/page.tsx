@@ -1,6 +1,6 @@
 'use client'
 
-import { VideoCamera, Mic, Settings, PhoneOff, Lock, Shield, Camera, AlertCircle } from 'lucide-react'
+import { Video, Mic, Settings, PhoneOff, Lock, Shield, Camera, AlertCircle } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
@@ -28,7 +28,7 @@ export default function CamMatchingPage() {
                 <div className="relative rounded-lg overflow-hidden h-80">
                   <div className="w-full h-full bg-gradient-to-br from-cyan-500/20 to-blue-600/20 flex items-center justify-center">
                     <div className="text-center">
-                      <VideoCamera size={64} className="mx-auto mb-4 text-cyan-400" />
+                      <Video size={64} className="mx-auto mb-4 text-cyan-400" />
                       <div className="text-xl font-bold">You</div>
                       <div className="text-gray-400 text-sm mt-2">Your Camera Feed</div>
                     </div>
@@ -63,7 +63,7 @@ export default function CamMatchingPage() {
                   Unmute
                 </button>
                 <button className="glass-light px-6 py-3 rounded-full hover:glow-purple transition flex items-center gap-2">
-                  <VideoCamera size={18} />
+                  <Video size={18} />
                   Camera Off
                 </button>
                 <button className="glass-light px-6 py-3 rounded-full hover:glow-cyan transition flex items-center gap-2">
@@ -106,7 +106,7 @@ export default function CamMatchingPage() {
               <div className="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
                 <div className="relative h-80 bg-gradient-to-b from-cyan-500/30 to-blue-600/20 flex items-end justify-center p-6">
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <VideoCamera size={48} className="mb-3 text-cyan-400" />
+                    <Video size={48} className="mb-3 text-cyan-400" />
                     <div className="text-lg font-bold">Ready for Video</div>
                   </div>
                   <div className="absolute top-3 right-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
@@ -131,7 +131,7 @@ export default function CamMatchingPage() {
                   <div className="space-y-2">
                     <p className="text-xs text-gray-500">Match Score: 92%</p>
                     <button className="w-full glass-light py-2 rounded-lg font-semibold btn-glow neon-cyan flex items-center justify-center gap-2">
-                      <VideoCamera size={16} />
+                      <Video size={16} />
                       Request Call
                     </button>
                   </div>
@@ -142,7 +142,7 @@ export default function CamMatchingPage() {
               <div className="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
                 <div className="relative h-80 bg-gradient-to-b from-purple-500/30 to-pink-600/20 flex items-end justify-center p-6">
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <VideoCamera size={48} className="mb-3 text-purple-400" />
+                    <Video size={48} className="mb-3 text-purple-400" />
                     <div className="text-lg font-bold">Ready for Video</div>
                   </div>
                   <div className="absolute top-3 right-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
@@ -167,7 +167,7 @@ export default function CamMatchingPage() {
                   <div className="space-y-2">
                     <p className="text-xs text-gray-500">Match Score: 88%</p>
                     <button className="w-full glass-light py-2 rounded-lg font-semibold btn-glow neon-cyan flex items-center justify-center gap-2">
-                      <VideoCamera size={16} />
+                      <Video size={16} />
                       Request Call
                     </button>
                   </div>
@@ -178,7 +178,7 @@ export default function CamMatchingPage() {
               <div className="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
                 <div className="relative h-80 bg-gradient-to-b from-pink-500/30 to-red-600/20 flex items-end justify-center p-6">
                   <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <VideoCamera size={48} className="mb-3 text-pink-400" />
+                    <Video size={48} className="mb-3 text-pink-400" />
                     <div className="text-lg font-bold">Ready for Video</div>
                   </div>
                   <div className="absolute top-3 right-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
@@ -203,7 +203,7 @@ export default function CamMatchingPage() {
                   <div className="space-y-2">
                     <p className="text-xs text-gray-500">Match Score: 85%</p>
                     <button className="w-full glass-light py-2 rounded-lg font-semibold btn-glow neon-cyan flex items-center justify-center gap-2">
-                      <VideoCamera size={16} />
+                      <Video size={16} />
                       Request Call
                     </button>
                   </div>

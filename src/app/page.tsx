@@ -1,6 +1,6 @@
 'use client'
 
-import { Heart, Radio, VideoCamera, Gift, Lock, Zap, Globe, MessageCircle, ChevronRight } from 'lucide-react'
+import { Heart, Radio, Video, Lock, Zap, Globe, MessageCircle } from 'lucide-react'
 import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 import ProfileCard from '@/components/ProfileCard'
@@ -222,7 +222,7 @@ export default function Home() {
               <div className="relative h-80 bg-gradient-to-b from-cyan-500/30 to-blue-600/20 flex items-end justify-center p-6 group">
                 <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-600/10"></div>
                 <div className="relative z-10 w-full text-center">
-                  <VideoCamera size={48} className="mx-auto mb-3 text-cyan-400" />
+                  <Video size={48} className="mx-auto mb-3 text-cyan-400" />
                   <div className="text-sm text-gray-300 font-semibold">Ready for Video Call</div>
                 </div>
                 <div className="absolute top-3 right-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
@@ -249,7 +249,7 @@ export default function Home() {
               <div className="relative h-80 bg-gradient-to-b from-purple-500/30 to-pink-600/20 flex items-end justify-center p-6">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-600/10"></div>
                 <div className="relative z-10 w-full text-center">
-                  <VideoCamera size={48} className="mx-auto mb-3 text-purple-400" />
+                  <Video size={48} className="mx-auto mb-3 text-purple-400" />
                   <div className="text-sm text-gray-300 font-semibold">In Video Call</div>
                 </div>
                 <div className="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
@@ -276,7 +276,7 @@ export default function Home() {
               <div className="relative h-80 bg-gradient-to-b from-pink-500/30 to-red-600/20 flex items-end justify-center p-6">
                 <div className="absolute inset-0 bg-gradient-to-br from-pink-400/10 to-red-600/10"></div>
                 <div className="relative z-10 w-full text-center">
-                  <VideoCamera size={48} className="mx-auto mb-3 text-pink-400" />
+                  <Video size={48} className="mx-auto mb-3 text-pink-400" />
                   <div className="text-sm text-gray-300 font-semibold">Available Soon</div>
                 </div>
                 <div className="absolute top-3 right-3 bg-gray-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
@@ -420,7 +420,7 @@ export default function Home() {
             </div>
 
             <div className="glass rounded-xl p-6 animate-slide-in-up stagger-3 card-hover">
-              <VideoCamera size={32} className="mb-4 text-pink-400" />
+              <Video size={32} className="mb-4 text-pink-400" />
               <h3 className="text-xl font-bold mb-3">HD Video Calls</h3>
               <p className="text-gray-400">Crystal clear cam-to-cam connections for authentic get-to-know conversations.</p>
             </div>
