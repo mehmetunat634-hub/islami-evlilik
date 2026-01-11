@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-DATE | Digital Nikkah Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        void: '#050505',
+                        neon: {
+                            purple: '#9D00FF',
+                            cyan: '#00F0FF',
+                        }
+                    },
+                    animation: {
+                        'spring-in': 'spring 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        spring: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.98)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    },
+                    boxShadow: {
+                        'neon-glow': '0 0 20px rgba(157, 0, 255, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/css">
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Background Decoration -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <div class="blob bg-neon-purple top-[-100px] left-[-100px] animate-pulse-slow"></div>
+        <div class="blob bg-neon-cyan bottom-[-100px] right-[-100px] animate-float"></div>
+    </div>
+
+    <!-- Main Viewport -->
+    <div class="min-h-screen flex items-center justify-center p-4 md:p-8">
+        
+        <!-- The Window (Main Container) -->
+        <main class="relative w-full max-w-7xl h-[85vh] md:h-[90vh] glass rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col animate-spring-in">
+            
+            <!-- Window Header / Title Bar -->
+            <div class="flex items-center justify-between px-8 py-6 border-b border-white/5">
+                <div class="flex space-x-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+                </div>
+                <div class="text-xs font-medium tracking-[0.3em] uppercase text-white/40">e-DATE // Secure Connection Protocol</div>
+                <div class="w-12"></div>
+            </div>
+
+            <!-- Scrollable Content -->
+            <div class="flex-1 overflow-y-auto no-scrollbar p-8 md:p-16">
+                
+                <!-- Hero Section -->
+                <div class="grid lg:grid-cols-2 gap-12 items-center mb-32">
+                    <div class="space-y-8">
+                        <div class="inline-flex items-center px-4 py-1.5 rounded-full border border-neon-cyan/30 bg-neon-cyan/5 text-neon-cyan text-xs font-bold tracking-widest uppercase">
+                            Next-Gen Nikkah Matching
+                        </div>
+                        <h1 class="font-display text-6xl md:text-8xl leading-tight text-white tracking-tighter">
+                            Eternal <br/>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan">Connections.</span>
+                        </h1>
+                        <p class="text-xl text-white/60 leading-relaxed max-w-lg">
+                            High-fidelity cam-to-cam matching designed for the modern Ummah. Where traditional values meet cyberpunk-grade privacy.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <button class="px-8 py-4 bg-white text-black rounded-2xl font-bold transition-all duration-300 hover:scale-[1.05] hover:shadow-neon-glow active:scale-95">
+                                Start Match Protocol
+                            </button>
+                            <button class="px-8 py-4 glass rounded-2xl font-bold transition-all duration-300 hover:bg-white/10 active:scale-95">
+                                Our Philosophy
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="relative flex justify-center items-center">
+                        <div class="absolute inset-0 bg-neon-purple/20 blur-[100px] rounded-full animate-pulse"></div>
+                        <lottie-player 
+                            src="https://lottie.host/80e3532f-488b-402a-9419-48d613264639/d7L7F7h221.json" 
+                            background="transparent" 
+                            speed="1" 
+                            style="width: 100%; height: 500px;" 
+                            loop 
+                            autoplay>
+                        </lottie-player>
+                    </div>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="grid md:grid-cols-3 gap-6 mb-24">
+                    <div class="glass p-8 rounded-[2rem] hover:scale-[1.02] transition-transform duration-500 group">
+                        <div class="w-12 h-12 bg-neon-cyan/20 rounded-xl mb-6 flex items-center justify-center text-neon-cyan group-hover:shadow-[0_0_15px_rgba(0,240,255,0.5)] transition-shadow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3 class="font-display text-2xl mb-4">Halal-First</h3>
+                        <p class="text-white/50 leading-relaxed">Identity verification protocols ensuring all users are committed to Islamic marriage principles.</p>
+                    </div>
+
+                    <div class="glass p-8 rounded-[2rem] hover:scale-[1.02] transition-transform duration-500 group">
+                        <div class="w-12 h-12 bg-neon-purple/20 rounded-xl mb-6 flex items-center justify-center text-neon-purple group-hover:shadow-[0_0_15px_rgba(157,0,255,0.5)] transition-shadow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <h3 class="font-display text-2xl mb-4">4K Matching</h3>
+                        <p class="text-white/50 leading-relaxed">Crystal clear cam-to-cam interfaces with low latency, optimized for deep, meaningful conversations.</p>
+                    </div>
+
+                    <div class="glass p-8 rounded-[2rem] hover:scale-[1.02] transition-transform duration-500 group">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl mb-6 flex items-center justify-center text-white group-hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-shadow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <h3 class="font-display text-2xl mb-4">Ummah Filter</h3>
+                        <p class="text-white/50 leading-relaxed">Search by nationality, culture, and religious observance with pixel-perfect precision.</p>
+                    </div>
+                </div>
+
+                <!-- Footer Visual -->
+                <div class="text-center py-20 border-t border-white/5">
+                    <p class="text-white/20 text-sm uppercase tracking-[0.5em] mb-4">Encrypted. Ethical. Eternal.</p>
+                    <div class="font-display text-4xl text-white/10">e-DATE // SYSTEM v4.0</div>
+                </div>
+            </div>
+        </main>
+
+        <!-- The Dock -->
+        <nav class="fixed bottom-12 left-1/2 -translate-x-1/2 px-6 py-4 glass rounded-full flex items-center space-x-8 shadow-2xl animate-spring-in stagger-3">
+            <a href="#" class="group relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/60 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">HOME</span>
+            </a>
+            <a href="#" class="group relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/60 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">MATCH</span>
+            </a>
+            <div class="w-[1px] h-6 bg-white/20"></div>
+            <a href="#" class="group relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white/60 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">CHAT</span>
+            </a>
+            <a href="#" class="group relative">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-neon-purple to-neon-cyan p-[2px]">
+                    <div class="w-full h-full rounded-full bg-void flex items-center justify-center overflow-hidden">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aisha" alt="Profile" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-black text-[10px] px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity font-bold">YOU</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Mouse Interaction Effect (Optional Enhancement) -->
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.blob');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            blobs[0].style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+            blobs[1].style.transform = `translate(${x * -50}px, ${y * -50}px)`;
+        });
+    </script>
+</body>
+</html>
