@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Matches - Nikkah Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+        }
+
+        body {
+            background: linear-gradient(135deg, #050505 0%, #0a0a1a 100%);
+            overflow-x: hidden;
+        }
+
+        .glass {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-light {
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00f0ff 0%, #9D00FF 50%, #ff006e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-in-up {
+            animation: slideInUp 0.6s ease;
+        }
+
+        .filter-badge {
+            transition: all 0.3s ease;
+        }
+
+        .filter-badge.active {
+            background: rgba(0, 240, 255, 0.3);
+            border-color: #00f0ff;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="glass fixed top-0 left-0 right-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold gradient-text">💍 Nikkah Connect</a>
+            <div class="flex gap-8">
+                <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
+                <a href="profiles.html" class="text-cyan-400">Profiles</a>
+                <a href="livestream.html" class="hover:text-purple-400 transition">Live</a>
+                <a href="cam-matching.html" class="hover:text-pink-400 transition">Cam Match</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20">
+        <!-- Header -->
+        <section class="py-12 border-b border-cyan-500/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h1 class="text-4xl font-bold mb-4">Find Your Perfect Match</h1>
+                <p class="text-gray-400 text-lg">Browse 10,000+ verified profiles</p>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="py-8 border-b border-cyan-500/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h3 class="text-lg font-bold mb-4">Filter by Preferences</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+                    <div class="glass-light p-3 rounded-lg">
+                        <label class="text-sm">Age Range</label>
+                        <input type="range" class="w-full" min="18" max="50">
+                        <span class="text-xs text-cyan-400">18-50</span>
+                    </div>
+                    <div class="glass-light p-3 rounded-lg">
+                        <label class="text-sm">Location</label>
+                        <select class="w-full bg-transparent border border-cyan-500/30 rounded px-2 py-1 text-sm">
+                            <option>Any</option>
+                            <option>Middle East</option>
+                            <option>Europe</option>
+                            <option>North America</option>
+                            <option>Asia</option>
+                        </select>
+                    </div>
+                    <div class="glass-light p-3 rounded-lg">
+                        <label class="text-sm">Education</label>
+                        <select class="w-full bg-transparent border border-cyan-500/30 rounded px-2 py-1 text-sm">
+                            <option>Any</option>
+                            <option>Bachelor's</option>
+                            <option>Master's</option>
+                            <option>PhD</option>
+                        </select>
+                    </div>
+                    <div class="glass-light p-3 rounded-lg">
+                        <label class="text-sm">Height</label>
+                        <select class="w-full bg-transparent border border-cyan-500/30 rounded px-2 py-1 text-sm">
+                            <option>Any</option>
+                            <option>5'0" - 5'6"</option>
+                            <option>5'6" - 6'0"</option>
+                            <option>6'0"+</option>
+                        </select>
+                    </div>
+                    <div class="glass-light p-3 rounded-lg">
+                        <label class="text-sm">Islamic Background</label>
+                        <select class="w-full bg-transparent border border-cyan-500/30 rounded px-2 py-1 text-sm">
+                            <option>Any</option>
+                            <option>Born Muslim</option>
+                            <option>Reverted Muslim</option>
+                        </select>
+                    </div>
+                    <button class="glass-light p-3 rounded-lg neon-cyan font-semibold hover:glow-cyan transition">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profiles Grid -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Profile Card Template (repeated) -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-80 bg-gradient-to-b from-cyan-500/20 to-transparent">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-600/10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                            <div class="absolute top-3 right-3 bg-cyan-500 px-3 py-1 rounded-full text-xs font-bold">28 • Cairo</div>
+                            <div class="absolute top-3 left-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                Online
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-1">Layla Al-Rashid</h3>
+                            <p class="text-sm text-gray-400 mb-3">Medical Doctor • 4 Languages</p>
+                            <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Reading</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300">Travel</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300">Sports</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4">Signed up 3 days ago</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-cyan transition">Profile</button>
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile 2 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-80 bg-gradient-to-b from-purple-500/20 to-transparent">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-600/10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                            <div class="absolute top-3 right-3 bg-purple-500 px-3 py-1 rounded-full text-xs font-bold">26 • Dubai</div>
+                            <div class="absolute top-3 left-3 bg-yellow-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="w-2 h-2 bg-white rounded-full"></span>
+                                Idle
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-1">Aisha Al-Mansouri</h3>
+                            <p class="text-sm text-gray-400 mb-3">Architect • Interior Designer</p>
+                            <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300">Design</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300">Hiking</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Art</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4">Signed up 1 week ago</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-purple transition">Profile</button>
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile 3 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-80 bg-gradient-to-b from-pink-500/20 to-transparent">
+                            <div class="absolute inset-0 bg-gradient-to-br from-pink-400/10 to-red-600/10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                            <div class="absolute top-3 right-3 bg-pink-500 px-3 py-1 rounded-full text-xs font-bold">25 • Istanbul</div>
+                            <div class="absolute top-3 left-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                Online
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-1">Fatima Al-Zahra</h3>
+                            <p class="text-sm text-gray-400 mb-3">Teacher • Community Volunteer</p>
+                            <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300">Cooking</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Gardening</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300">Education</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4">Signed up 2 weeks ago</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-pink transition">Profile</button>
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile 4 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-80 bg-gradient-to-b from-cyan-500/20 to-transparent">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-teal-600/10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                            <div class="absolute top-3 right-3 bg-cyan-500 px-3 py-1 rounded-full text-xs font-bold">29 • London</div>
+                            <div class="absolute top-3 left-3 bg-red-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="w-2 h-2 bg-white rounded-full"></span>
+                                Offline
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-1">Noor Al-Amiri</h3>
+                            <p class="text-sm text-gray-400 mb-3">Software Engineer • Tech Lead</p>
+                            <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Technology</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300">Reading</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300">Music</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4">Signed up 1 day ago</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-cyan transition">Profile</button>
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile 5 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-80 bg-gradient-to-b from-purple-500/20 to-transparent">
+                            <div class="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-indigo-600/10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                            <div class="absolute top-3 right-3 bg-purple-500 px-3 py-1 rounded-full text-xs font-bold">27 • Toronto</div>
+                            <div class="absolute top-3 left-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                Online
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-1">Sara Al-Qadi</h3>
+                            <p class="text-sm text-gray-400 mb-3">Business Owner • Entrepreneur</p>
+                            <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300">Business</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Travel</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300">Fashion</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4">Signed up 3 weeks ago</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-purple transition">Profile</button>
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile 6 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-80 bg-gradient-to-b from-pink-500/20 to-transparent">
+                            <div class="absolute inset-0 bg-gradient-to-br from-pink-400/10 to-rose-600/10"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                            <div class="absolute top-3 right-3 bg-pink-500 px-3 py-1 rounded-full text-xs font-bold">24 • Sydney</div>
+                            <div class="absolute top-3 left-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+                                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                Online
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold mb-1">Yasmin Al-Rashid</h3>
+                            <p class="text-sm text-gray-400 mb-3">Pharmacist • Health Conscious</p>
+                            <div class="flex gap-2 mb-4 flex-wrap">
+                                <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300">Health</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Fitness</span>
+                                <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300">Volunteering</span>
+                            </div>
+                            <p class="text-xs text-gray-500 mb-4">Signed up 4 days ago</p>
+                            <div class="flex gap-2">
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-pink transition">Profile</button>
+                                <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink">❤️</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More -->
+                <div class="text-center mt-12">
+                    <button class="glass-light px-8 py-3 rounded-full font-semibold hover:glow-cyan transition">
+                        Load More Profiles
+                    </button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-cyan-500/20 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm">
+            <p>&copy; 2026 Nikkah Connect. Find your perfect match today.</p>
+        </div>
+    </footer>
+</body>
+</html>

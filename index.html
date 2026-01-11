@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikkah Connect - Islamic Dating & Marriage Platform</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <!-- Lottie Animations -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest"></script>
+
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+        }
+
+        body {
+            background: linear-gradient(135deg, #050505 0%, #0a0a1a 100%);
+            overflow-x: hidden;
+        }
+
+        /* Glass Morphism */
+        .glass {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-light {
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Neon Glows */
+        .neon-cyan {
+            text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+            color: #00f0ff;
+        }
+
+        .neon-purple {
+            text-shadow: 0 0 10px #9D00FF, 0 0 20px #9D00FF;
+            color: #9D00FF;
+        }
+
+        .neon-pink {
+            text-shadow: 0 0 10px #ff006e, 0 0 20px #ff006e;
+            color: #ff006e;
+        }
+
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4), inset 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+
+        .glow-purple {
+            box-shadow: 0 0 20px rgba(157, 0, 255, 0.4), inset 0 0 20px rgba(157, 0, 255, 0.1);
+        }
+
+        .glow-pink {
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.4), inset 0 0 20px rgba(255, 0, 110, 0.1);
+        }
+
+        /* Animated Blobs */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(20px, -50px) scale(1.1); }
+            50% { transform: translate(-20px, 20px) scale(0.9); }
+            75% { transform: translate(50px, 50px) scale(1.05); }
+        }
+
+        @keyframes float-blur {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(30px) rotate(180deg); }
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(50px);
+            opacity: 0.6;
+            mix-blend-mode: screen;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #00f0ff 0%, transparent 70%);
+            top: -200px;
+            right: -100px;
+            animation: blob 8s infinite;
+        }
+
+        .blob-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #9D00FF 0%, transparent 70%);
+            bottom: -250px;
+            left: -150px;
+            animation: float-blur 10s infinite;
+        }
+
+        .blob-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #ff006e 0%, transparent 70%);
+            top: 50%;
+            left: 10%;
+            animation: blob 12s infinite;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(0, 240, 255, 0.8); }
+        }
+
+        .animate-slide-in-down {
+            animation: slideInDown 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-slide-in-up {
+            animation: slideInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Staggered animations */
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        .stagger-5 { animation-delay: 0.5s; }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 40;
+        }
+
+        /* Floating Dock */
+        .floating-dock {
+            position: fixed;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 30;
+        }
+
+        /* Interactive hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-glow {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        .livestream-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: #ff006e;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            animation: pulse-glow 1.5s infinite;
+        }
+
+        .livestream-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #ff006e;
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00f0ff 0%, #9D00FF 50%, #ff006e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .input-focus:focus {
+            box-shadow: 0 0 0 2px #050505, 0 0 0 4px #00f0ff;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Background Blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar glass">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-lg flex items-center justify-center">
+                    <span class="text-xl font-bold">💍</span>
+                </div>
+                <h1 class="text-2xl font-bold gradient-text">Nikkah Connect</h1>
+            </div>
+            <div class="flex gap-8 items-center">
+                <a href="#profiles" class="hover:text-cyan-400 transition">Find Match</a>
+                <a href="#livestream" class="hover:text-purple-400 transition">Live Streams</a>
+                <a href="#cam-match" class="hover:text-pink-400 transition">Cam Match</a>
+                <a href="#weddings" class="hover:text-cyan-400 transition">Weddings</a>
+                <button class="glass-light px-6 py-2 rounded-full text-sm font-semibold hover:glow-cyan transition">
+                    Sign In
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="animate-slide-in-down">
+                <h2 class="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                    Find Your <span class="neon-cyan">Perfect</span> <span class="neon-purple">Match</span>
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Discover Islamic matrimonial connections through intelligent matching, live streams, and authentic cam-to-cam meetings. Connect with like-minded individuals seeking meaningful relationships guided by Islamic values.
+                </p>
+                <div class="flex gap-4">
+                    <button class="glass-light px-8 py-3 rounded-full font-semibold btn-glow neon-cyan">
+                        Start Matching
+                    </button>
+                    <button class="glass px-8 py-3 rounded-full font-semibold border border-cyan-400 hover:bg-cyan-400/10 transition">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-6 mt-16">
+                    <div class="glass p-4 rounded-lg">
+                        <div class="text-3xl font-bold neon-cyan">50K+</div>
+                        <div class="text-sm text-gray-400 mt-2">Active Members</div>
+                    </div>
+                    <div class="glass p-4 rounded-lg">
+                        <div class="text-3xl font-bold neon-purple">2.5K+</div>
+                        <div class="text-sm text-gray-400 mt-2">Happy Couples</div>
+                    </div>
+                    <div class="glass p-4 rounded-lg">
+                        <div class="text-3xl font-bold neon-pink">98%</div>
+                        <div class="text-sm text-gray-400 mt-2">Match Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right - Lottie Animation or Hero Image -->
+            <div class="animate-slide-in-up">
+                <lottie-player
+                    src="https://lottie.host/b02f9ecf-8b0e-4d96-bfcc-15f8f2c8c0e7/nHNcABCkCn.json"
+                    background="transparent"
+                    speed="1"
+                    style="width: 100%; height: 500px;"
+                    loop
+                    autoplay>
+                </lottie-player>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Browsing Section -->
+    <section id="profiles" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 animate-slide-in-down">
+                <h2 class="text-5xl font-bold mb-4">Discover Matches</h2>
+                <p class="text-gray-400 text-lg">Smart algorithm matching based on Islamic values, interests, and lifestyle</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Profile Card 1 -->
+                <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up stagger-1 group">
+                    <div class="relative h-72 bg-gradient-to-b from-cyan-500/20 to-transparent flex items-center justify-center overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-600 opacity-30"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                        <div class="absolute top-3 right-3 bg-cyan-500 px-3 py-1 rounded-full text-xs font-bold">28 • Cairo</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">Layla Al-Rashid</h3>
+                        <p class="text-sm text-gray-400 mb-4">Medical Doctor • Speaks 4 languages</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 border border-cyan-500/50 text-cyan-300">Quran Reading</span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 border border-purple-500/50 text-purple-300">Travel</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-cyan transition">View Profile</button>
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink hover:glow-pink transition">❤️ Match</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Card 2 -->
+                <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up stagger-2">
+                    <div class="relative h-72 bg-gradient-to-b from-purple-500/20 to-transparent flex items-center justify-center overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-600 opacity-30"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                        <div class="absolute top-3 right-3 bg-purple-500 px-3 py-1 rounded-full text-xs font-bold">26 • Dubai</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">Aisha Al-Mansouri</h3>
+                        <p class="text-sm text-gray-400 mb-4">Architect • Passionate about design</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 border border-purple-500/50 text-purple-300">Architecture</span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 border border-pink-500/50 text-pink-300">Hiking</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-purple transition">View Profile</button>
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink hover:glow-pink transition">❤️ Match</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Card 3 -->
+                <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up stagger-3">
+                    <div class="relative h-72 bg-gradient-to-b from-pink-500/20 to-transparent flex items-center justify-center overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-pink-400 to-red-600 opacity-30"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                        <div class="absolute top-3 right-3 bg-pink-500 px-3 py-1 rounded-full text-xs font-bold">25 • Istanbul</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">Fatima Al-Zahra</h3>
+                        <p class="text-sm text-gray-400 mb-4">Teacher • Love cooking & nature</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 border border-pink-500/50 text-pink-300">Cooking</span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 border border-cyan-500/50 text-cyan-300">Gardening</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-pink transition">View Profile</button>
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink hover:glow-pink transition">❤️ Match</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Card 4 -->
+                <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up stagger-4">
+                    <div class="relative h-72 bg-gradient-to-b from-cyan-500/20 to-transparent flex items-center justify-center overflow-hidden">
+                        <div class="w-full h-full bg-gradient-to-br from-cyan-400 to-teal-600 opacity-30"></div>
+                        <div class="absolute inset-0 flex items-center justify-center text-6xl">👩</div>
+                        <div class="absolute top-3 right-3 bg-cyan-500 px-3 py-1 rounded-full text-xs font-bold">29 • London</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-lg font-bold mb-2">Noor Al-Amiri</h3>
+                        <p class="text-sm text-gray-400 mb-4">Software Engineer • Tech enthusiast</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 border border-cyan-500/50 text-cyan-300">Technology</span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 border border-purple-500/50 text-purple-300">Reading</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold hover:glow-cyan transition">View Profile</button>
+                            <button class="flex-1 glass-light py-2 rounded text-sm font-semibold neon-pink hover:glow-pink transition">❤️ Match</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="glass-light px-8 py-3 rounded-full font-semibold btn-glow neon-cyan">
+                    View All Profiles (10,000+)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Streaming Section -->
+    <section id="livestream" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 animate-slide-in-down">
+                <h2 class="text-5xl font-bold mb-4">Live Streams & Events</h2>
+                <p class="text-gray-400 text-lg">Watch live Islamic talks, Quran recitations, and matchmaking events</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <!-- Main Live Stream -->
+                <div class="lg:col-span-1 glass rounded-2xl overflow-hidden animate-slide-in-up stagger-1">
+                    <div class="relative h-96 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="text-8xl mb-4">📡</div>
+                            <div class="text-xl font-bold">Islamic Values Discussion</div>
+                        </div>
+                        <div class="livestream-badge">
+                            🔴 LIVE - 2.4K Watching
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Understanding Nikkah in Modern Times</h3>
+                        <p class="text-gray-400 mb-4">Hosted by Dr. Mohamed Hassan • Started 5 mins ago</p>
+                        <div class="flex gap-3">
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-cyan transition">Watch Live</button>
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-purple transition">Share</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary Stream -->
+                <div class="glass rounded-2xl overflow-hidden animate-slide-in-up stagger-2">
+                    <div class="relative h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="text-8xl mb-4">🎤</div>
+                            <div class="text-xl font-bold">Success Stories Q&A</div>
+                        </div>
+                        <div class="livestream-badge">
+                            🔴 LIVE - 1.8K Watching
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Meet a Couple: From App to Nikah</h3>
+                        <p class="text-gray-400 mb-4">Hosted by Nikkah Connect Team • Started 15 mins ago</p>
+                        <div class="flex gap-3">
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-cyan transition">Watch Live</button>
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-purple transition">Share</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="glass rounded-2xl p-8 animate-slide-in-up stagger-3">
+                <h3 class="text-2xl font-bold mb-6">Upcoming Live Events</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-light p-4 rounded-lg border border-cyan-500/30">
+                        <div class="text-sm text-cyan-400 font-semibold mb-2">📅 Tomorrow, 7 PM GST</div>
+                        <h4 class="font-bold mb-2">Halal Dating Tips</h4>
+                        <p class="text-xs text-gray-400">Expert discussion on modern Islamic courtship</p>
+                    </div>
+                    <div class="glass-light p-4 rounded-lg border border-purple-500/30">
+                        <div class="text-sm text-purple-400 font-semibold mb-2">📅 Friday, 8 PM GST</div>
+                        <h4 class="font-bold mb-2">Quran & Love</h4>
+                        <p class="text-xs text-gray-400">Quranic perspectives on marriage and partnership</p>
+                    </div>
+                    <div class="glass-light p-4 rounded-lg border border-pink-500/30">
+                        <div class="text-sm text-pink-400 font-semibold mb-2">📅 Saturday, 6 PM GST</div>
+                        <h4 class="font-bold mb-2">Marriage Prep Workshop</h4>
+                        <p class="text-xs text-gray-400">Preparing for a successful Islamic marriage</p>
+                    </div>
+                    <div class="glass-light p-4 rounded-lg border border-cyan-500/30">
+                        <div class="text-sm text-cyan-400 font-semibold mb-2">📅 Sunday, 5 PM GST</div>
+                        <h4 class="font-bold mb-2">Family Matters Talk</h4>
+                        <p class="text-xs text-gray-400">Navigating family dynamics in relationships</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cam-to-Cam Matching Section -->
+    <section id="cam-match" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 animate-slide-in-down">
+                <h2 class="text-5xl font-bold mb-4">Cam-to-Cam Matching</h2>
+                <p class="text-gray-400 text-lg">Connect face-to-face with potential matches in real-time video calls</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Cam Match Card 1 -->
+                <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up stagger-1">
+                    <div class="relative h-80 bg-gradient-to-b from-cyan-500/30 to-blue-600/20 flex items-end justify-center p-6 group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-600/10"></div>
+                        <div class="relative z-10 w-full text-center">
+                            <div class="text-6xl mb-3">📹</div>
+                            <div class="text-sm text-gray-300 font-semibold">Ready for Video Call</div>
+                        </div>
+                        <div class="absolute top-3 right-3 bg-green-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                            Online
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Dina Al-Mansoor</h3>
+                        <p class="text-sm text-gray-400 mb-2">28 • Jeddah</p>
+                        <p class="text-sm text-gray-400 mb-4">Investment Banker | Fitness enthusiast | Loves traveling</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs bg-cyan-500/20 text-cyan-300">Verified</span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-green-500/20 text-green-300">📸 Photo</span>
+                        </div>
+                        <button class="w-full glass-light py-2 rounded-lg font-semibold btn-glow neon-cyan">
+                            Request Video Call
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cam Match Card 2 -->
+                <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up stagger-2">
+                    <div class="relative h-80 bg-gradient-to-b from-purple-500/30 to-pink-600/20 flex items-end justify-center p-6">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-pink-600/10"></div>
+                        <div class="relative z-10 w-full text-center">
+                            <div class="text-6xl mb-3">📹</div>
+                            <div class="text-sm text-gray-300 font-semibold">In Video Call</div>
+                        </div>
+                        <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                            Busy
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Salma El-Sayed</h3>
+                        <p class="text-sm text-gray-400 mb-2">26 • Cairo</p>
+                        <p class="text-sm text-gray-400 mb-4">Dentist | Passion for volunteering | Bookworm</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs bg-purple-500/20 text-purple-300">Verified</span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-green-500/20 text-green-300">📸 Photo</span>
+                        </div>
+                        <button class="w-full glass-light py-2 rounded-lg font-semibold text-gray-400 cursor-not-allowed opacity-50">
+                            Call in Progress...
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cam Match Card 3 -->
+                <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up stagger-3">
+                    <div class="relative h-80 bg-gradient-to-b from-pink-500/30 to-red-600/20 flex items-end justify-center p-6">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-400/10 to-red-600/10"></div>
+                        <div class="relative z-10 w-full text-center">
+                            <div class="text-6xl mb-3">📹</div>
+                            <div class="text-sm text-gray-300 font-semibold">Available Soon</div>
+                        </div>
+                        <div class="absolute top-3 right-3 bg-gray-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2">
+                            <span class="w-2 h-2 bg-white rounded-full"></span>
+                            Offline
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Mariam Al-Qasimi</h3>
+                        <p class="text-sm text-gray-400 mb-2">24 • Abu Dhabi</p>
+                        <p class="text-sm text-gray-400 mb-4">Fashion Designer | Creative mind | Nature lover</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 rounded-full text-xs bg-pink-500/20 text-pink-300">Verified</span>
+                            <span class="px-3 py-1 rounded-full text-xs bg-green-500/20 text-green-300">📸 Photo</span>
+                        </div>
+                        <button class="w-full glass-light py-2 rounded-lg font-semibold hover:glow-pink transition">
+                            Schedule Call
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="glass rounded-2xl p-8 mt-12 animate-slide-in-up stagger-4">
+                <h3 class="text-2xl font-bold mb-8">How Cam-to-Cam Matching Works</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">1</div>
+                        <h4 class="font-bold mb-2">Find Match</h4>
+                        <p class="text-sm text-gray-400">Browse verified profiles and find someone compatible</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">2</div>
+                        <h4 class="font-bold mb-2">Request Video</h4>
+                        <p class="text-sm text-gray-400">Send a video call request to your potential match</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-pink-400 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">3</div>
+                        <h4 class="font-bold mb-2">Connect</h4>
+                        <p class="text-sm text-gray-400">Get to know each other through authentic face-to-face conversations</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-teal-600 rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">4</div>
+                        <h4 class="font-bold mb-2">Progress</h4>
+                        <p class="text-sm text-gray-400">Move towards real-world meetings and potential Nikkah</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Announcements Section -->
+    <section id="weddings" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 animate-slide-in-down">
+                <h2 class="text-5xl font-bold mb-4">🎉 Wedding Celebrations</h2>
+                <p class="text-gray-400 text-lg">Share your joy and celebrate love stories from our community</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Wedding Card 1 -->
+                <div class="glass rounded-2xl overflow-hidden animate-slide-in-up stagger-1 card-hover">
+                    <div class="relative h-80 bg-gradient-to-br from-pink-400/20 to-red-600/20">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-8xl mb-4">💑</div>
+                                <div class="text-2xl font-bold">Ahmed & Zainab</div>
+                                <div class="text-lg text-gray-300 mt-2">Married Today! 📅 Jan 11, 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">From Matches to Forever</h3>
+                        <p class="text-gray-400 mb-4">"We met on Nikkah Connect just 6 months ago. The video calls helped us get to know each other authentically, and alhamdulillah, we're now married! Thank you for helping us find love guided by Islamic values."</p>
+                        <div class="flex gap-3">
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-pink transition">View Photos</button>
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-cyan transition">Read Story</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wedding Card 2 -->
+                <div class="glass rounded-2xl overflow-hidden animate-slide-in-up stagger-2 card-hover">
+                    <div class="relative h-80 bg-gradient-to-br from-cyan-400/20 to-blue-600/20">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-8xl mb-4">💒</div>
+                                <div class="text-2xl font-bold">Hassan & Noor</div>
+                                <div class="text-lg text-gray-300 mt-2">Getting Married Soon! 📅 Feb 20, 2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">A Match Made in Heaven</h3>
+                        <p class="text-gray-400 mb-4">"The app's smart matching brought us together. The live events taught us so much about Islamic marriage values. Now we're excited to start our journey together!"</p>
+                        <div class="flex gap-3">
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-cyan transition">View Details</button>
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-purple transition">Share Wishes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                <div class="glass rounded-xl p-8 text-center animate-slide-in-up stagger-3">
+                    <div class="text-5xl font-bold neon-pink mb-3">2,547</div>
+                    <p class="text-gray-400">Couples Married</p>
+                </div>
+                <div class="glass rounded-xl p-8 text-center animate-slide-in-up stagger-4">
+                    <div class="text-5xl font-bold neon-cyan mb-3">15K+</div>
+                    <p class="text-gray-400">Successful Matches</p>
+                </div>
+                <div class="glass rounded-xl p-8 text-center animate-slide-in-up stagger-5">
+                    <div class="text-5xl font-bold neon-purple mb-3">98.5%</div>
+                    <p class="text-gray-400">Compatibility Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 animate-slide-in-down">
+                <h2 class="text-5xl font-bold mb-4">Why Choose Nikkah Connect?</h2>
+                <p class="text-gray-400 text-lg">Everything you need for your Islamic matrimonial journey</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="glass rounded-xl p-6 animate-slide-in-up stagger-1 card-hover">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-3">Verified & Safe</h3>
+                    <p class="text-gray-400">All profiles are verified. ID confirmation and background checks ensure safety.</p>
+                </div>
+
+                <div class="glass rounded-xl p-6 animate-slide-in-up stagger-2 card-hover">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold mb-3">Smart Matching</h3>
+                    <p class="text-gray-400">AI algorithm matches based on Islamic values, interests, lifestyle & compatibility.</p>
+                </div>
+
+                <div class="glass rounded-xl p-6 animate-slide-in-up stagger-3 card-hover">
+                    <div class="text-4xl mb-4">🎥</div>
+                    <h3 class="text-xl font-bold mb-3">HD Video Calls</h3>
+                    <p class="text-gray-400">Crystal clear cam-to-cam connections for authentic get-to-know conversations.</p>
+                </div>
+
+                <div class="glass rounded-xl p-6 animate-slide-in-up stagger-4 card-hover">
+                    <div class="text-4xl mb-4">📡</div>
+                    <h3 class="text-xl font-bold mb-3">Live Events</h3>
+                    <p class="text-gray-400">Educational streams on Islamic marriage, Quran recitations & success stories.</p>
+                </div>
+
+                <div class="glass rounded-xl p-6 animate-slide-in-up stagger-5 card-hover">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold mb-3">Global Community</h3>
+                    <p class="text-gray-400">Connect with Muslims worldwide. Support for multiple languages & cultures.</p>
+                </div>
+
+                <div class="glass rounded-xl p-6 animate-slide-in-up stagger-1 card-hover">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-xl font-bold mb-3">24/7 Support</h3>
+                    <p class="text-gray-400">Our team is always here to help guide you on your journey to marriage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="glass rounded-3xl p-12 animate-scale-in">
+                <h2 class="text-5xl font-bold mb-6">Ready to Find Your Perfect Match?</h2>
+                <p class="text-xl text-gray-400 mb-8">Join 50,000+ Muslims on their journey to meaningful relationships</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="glass-light px-10 py-4 rounded-full font-bold btn-glow neon-cyan text-lg">
+                        Create Free Account
+                    </button>
+                    <button class="glass px-10 py-4 rounded-full font-bold border border-cyan-400 hover:bg-cyan-400/10 transition text-lg">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-cyan-500/20 py-12 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="text-2xl">💍</span>
+                        <h3 class="text-xl font-bold">Nikkah Connect</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm">Where Islamic values meet modern love</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-cyan-400 transition">Find Matches</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Live Streams</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Cam Matching</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-cyan-400 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-cyan-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Safety Guidelines</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-cyan-500/20 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2026 Nikkah Connect. All rights reserved. Made with 💜 for the Muslim community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Dock Navigation -->
+    <div class="floating-dock glass rounded-full px-6 py-3 flex gap-4">
+        <button class="p-2 hover:text-cyan-400 transition" title="Home">🏠</button>
+        <button class="p-2 hover:text-cyan-400 transition" title="Messages">💬</button>
+        <button class="p-2 hover:text-cyan-400 transition" title="Matches">❤️</button>
+        <button class="p-2 hover:text-cyan-400 transition" title="Notifications">🔔</button>
+        <button class="p-2 hover:text-cyan-400 transition" title="Profile">👤</button>
+    </div>
+</body>
+</html>

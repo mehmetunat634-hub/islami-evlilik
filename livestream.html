@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Streams - Nikkah Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+        }
+
+        body {
+            background: linear-gradient(135deg, #050505 0%, #0a0a1a 100%);
+        }
+
+        .glass {
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-light {
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00f0ff 0%, #9D00FF 50%, #ff006e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .livestream-badge {
+            animation: pulse-badge 1s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 40px rgba(0, 240, 255, 0.3);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-in-up {
+            animation: slideInUp 0.6s ease;
+        }
+
+        .chat-message {
+            animation: slideInUp 0.3s ease;
+        }
+
+        .viewer-count {
+            position: relative;
+        }
+
+        .viewer-count::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background: #ff006e;
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.4; transform: translateY(-50%) scale(1.2); }
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Navigation -->
+    <nav class="glass fixed top-0 left-0 right-0 z-40">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold gradient-text">💍 Nikkah Connect</a>
+            <div class="flex gap-8">
+                <a href="index.html" class="hover:text-cyan-400 transition">Home</a>
+                <a href="profiles.html" class="hover:text-purple-400 transition">Profiles</a>
+                <a href="livestream.html" class="text-cyan-400">Live</a>
+                <a href="cam-matching.html" class="hover:text-pink-400 transition">Cam Match</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20">
+        <!-- Header -->
+        <section class="py-12 border-b border-cyan-500/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h1 class="text-4xl font-bold mb-4">Live Streams & Events</h1>
+                <p class="text-gray-400 text-lg">Educational content, success stories, and Islamic talks</p>
+            </div>
+        </section>
+
+        <!-- Main Featured Stream -->
+        <section class="py-12">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="glass rounded-2xl overflow-hidden mb-12 animate-slide-in-up">
+                    <div class="grid grid-cols-1 lg:grid-cols-3">
+                        <!-- Main Video Player -->
+                        <div class="lg:col-span-2 bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 aspect-video flex flex-col items-center justify-center relative">
+                            <div class="text-8xl mb-4">🎥</div>
+                            <div class="text-2xl font-bold mb-2">Live Stream Player</div>
+                            <div class="text-gray-400">Understanding Nikkah in Modern Times</div>
+
+                            <!-- Live Badge -->
+                            <div class="absolute top-4 left-4 flex items-center gap-2 bg-red-500 px-4 py-2 rounded-full">
+                                <span class="w-3 h-3 bg-white rounded-full animate-pulse"></span>
+                                <span class="font-bold">LIVE</span>
+                            </div>
+
+                            <!-- Viewer Count -->
+                            <div class="absolute top-4 right-4 glass-light px-4 py-2 rounded-full flex items-center gap-2">
+                                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                                <span class="font-semibold">2,847 watching</span>
+                            </div>
+                        </div>
+
+                        <!-- Chat Sidebar -->
+                        <div class="bg-black/30 flex flex-col max-h-96 lg:max-h-full">
+                            <!-- Chat Header -->
+                            <div class="border-b border-cyan-500/20 p-4">
+                                <h3 class="font-bold">Live Chat</h3>
+                                <p class="text-xs text-gray-400">2,500+ messages</p>
+                            </div>
+
+                            <!-- Chat Messages -->
+                            <div class="flex-1 overflow-y-auto p-4 space-y-3">
+                                <div class="chat-message">
+                                    <p class="text-sm"><span class="text-cyan-400 font-semibold">@Leila:</span> Alhamdulillah for this guidance!</p>
+                                </div>
+                                <div class="chat-message">
+                                    <p class="text-sm"><span class="text-purple-400 font-semibold">@Hassan:</span> Very informative stream 📚</p>
+                                </div>
+                                <div class="chat-message">
+                                    <p class="text-sm"><span class="text-pink-400 font-semibold">@Aisha:</span> Love this topic! ❤️</p>
+                                </div>
+                                <div class="chat-message">
+                                    <p class="text-sm"><span class="text-cyan-400 font-semibold">@Omar:</span> Great discussion!</p>
+                                </div>
+                            </div>
+
+                            <!-- Chat Input -->
+                            <div class="border-t border-cyan-500/20 p-3">
+                                <input type="text" placeholder="Say something..." class="w-full bg-black/40 border border-cyan-500/30 rounded px-3 py-2 text-sm placeholder-gray-500 focus:outline-none focus:border-cyan-400">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stream Info -->
+                    <div class="border-t border-cyan-500/20 p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">Understanding Nikkah in Modern Times</h3>
+                                <p class="text-gray-400 mb-3">Join Dr. Mohamed Hassan as he discusses Islamic marriage values in the modern world, building strong relationships, and navigating contemporary challenges with faith as your guide.</p>
+                            </div>
+                            <div class="glass-light p-4 rounded-lg">
+                                <h4 class="font-bold mb-3">Host Info</h4>
+                                <p class="text-sm mb-2"><span class="text-gray-400">Hosted by:</span> Dr. Mohamed Hassan</p>
+                                <p class="text-sm mb-2"><span class="text-gray-400">Experience:</span> 15+ years</p>
+                                <p class="text-sm"><span class="text-gray-400">Followers:</span> 150K+</p>
+                            </div>
+                            <div class="glass-light p-4 rounded-lg">
+                                <h4 class="font-bold mb-3">Stream Details</h4>
+                                <p class="text-sm mb-2"><span class="text-gray-400">Duration:</span> 1h 25m</p>
+                                <p class="text-sm mb-2"><span class="text-gray-400">Started:</span> 25 mins ago</p>
+                                <p class="text-sm"><span class="text-gray-400">Category:</span> Educational</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-cyan transition">❤️ Like Stream</button>
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-purple transition">📤 Share</button>
+                            <button class="flex-1 glass-light py-2 rounded-lg font-semibold hover:glow-pink transition">💾 Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ongoing Streams -->
+        <section class="py-12 border-t border-cyan-500/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8">Other Ongoing Streams</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Stream 1 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-56 bg-gradient-to-b from-purple-500/20 to-pink-600/20 flex items-center justify-center">
+                            <div class="text-6xl">🎤</div>
+                            <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 livestream-badge">
+                                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                LIVE
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold mb-2">Success Stories Q&A</h3>
+                            <p class="text-sm text-gray-400 mb-3">Meet a couple who met on Nikkah Connect and share their journey</p>
+                            <div class="flex items-center gap-2 text-sm mb-3">
+                                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                                <span>1,823 watching</span>
+                            </div>
+                            <button class="w-full glass-light py-2 rounded text-sm font-semibold hover:glow-purple transition">Join Stream</button>
+                        </div>
+                    </div>
+
+                    <!-- Stream 2 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-56 bg-gradient-to-b from-cyan-500/20 to-blue-600/20 flex items-center justify-center">
+                            <div class="text-6xl">📖</div>
+                            <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 livestream-badge">
+                                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                LIVE
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold mb-2">Quranic Verses on Love</h3>
+                            <p class="text-sm text-gray-400 mb-3">Exploring Quranic perspectives on love, marriage, and relationships</p>
+                            <div class="flex items-center gap-2 text-sm mb-3">
+                                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                                <span>945 watching</span>
+                            </div>
+                            <button class="w-full glass-light py-2 rounded text-sm font-semibold hover:glow-cyan transition">Join Stream</button>
+                        </div>
+                    </div>
+
+                    <!-- Stream 3 -->
+                    <div class="glass rounded-xl overflow-hidden card-hover animate-slide-in-up">
+                        <div class="relative h-56 bg-gradient-to-b from-pink-500/20 to-red-600/20 flex items-center justify-center">
+                            <div class="text-6xl">💬</div>
+                            <div class="absolute top-3 right-3 bg-red-500 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 livestream-badge">
+                                <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                LIVE
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold mb-2">Marriage Prep Workshop</h3>
+                            <p class="text-sm text-gray-400 mb-3">Get ready for marriage with expert tips and Islamic guidance</p>
+                            <div class="flex items-center gap-2 text-sm mb-3">
+                                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                                <span>2,156 watching</span>
+                            </div>
+                            <button class="w-full glass-light py-2 rounded text-sm font-semibold hover:glow-pink transition">Join Stream</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events -->
+        <section class="py-12 border-t border-cyan-500/20">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8">Upcoming Events</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-light p-4 rounded-lg border border-cyan-500/30 animate-slide-in-up">
+                        <div class="text-sm text-cyan-400 font-semibold mb-2">📅 Tomorrow, 7 PM GST</div>
+                        <h4 class="font-bold mb-1">Halal Dating Tips</h4>
+                        <p class="text-xs text-gray-400 mb-3">Expert discussion on modern Islamic courtship</p>
+                        <button class="w-full text-xs glass-light py-1 rounded hover:glow-cyan transition">Notify Me</button>
+                    </div>
+
+                    <div class="glass-light p-4 rounded-lg border border-purple-500/30 animate-slide-in-up">
+                        <div class="text-sm text-purple-400 font-semibold mb-2">📅 Friday, 8 PM GST</div>
+                        <h4 class="font-bold mb-1">Quran & Love</h4>
+                        <p class="text-xs text-gray-400 mb-3">Quranic perspectives on marriage and partnership</p>
+                        <button class="w-full text-xs glass-light py-1 rounded hover:glow-purple transition">Notify Me</button>
+                    </div>
+
+                    <div class="glass-light p-4 rounded-lg border border-pink-500/30 animate-slide-in-up">
+                        <div class="text-sm text-pink-400 font-semibold mb-2">📅 Saturday, 6 PM GST</div>
+                        <h4 class="font-bold mb-1">Family Matters Talk</h4>
+                        <p class="text-xs text-gray-400 mb-3">Navigating family dynamics in relationships</p>
+                        <button class="w-full text-xs glass-light py-1 rounded hover:glow-pink transition">Notify Me</button>
+                    </div>
+
+                    <div class="glass-light p-4 rounded-lg border border-cyan-500/30 animate-slide-in-up">
+                        <div class="text-sm text-cyan-400 font-semibold mb-2">📅 Sunday, 5 PM GST</div>
+                        <h4 class="font-bold mb-1">Community Gathering</h4>
+                        <p class="text-xs text-gray-400 mb-3">Connect with other Nikkah Connect members</p>
+                        <button class="w-full text-xs glass-light py-1 rounded hover:glow-cyan transition">Notify Me</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-cyan-500/20 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-400 text-sm">
+            <p>&copy; 2026 Nikkah Connect. Join live events and build your Islamic marriage journey.</p>
+        </div>
+    </footer>
+</body>
+</html>
